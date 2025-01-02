@@ -55,10 +55,41 @@ const JoiningForm = () => {
         .border, .border-b {
             border-color: black;
         }
+
+        .print-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .print-button i {
+    font-size: 18px; /* Adjust icon size */
+  }
+
+  .print-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+    @media print {
+    .print-button {
+      display: none;
+    }
+  }
     </style>
 </head>
 <body class="bg-white p-1">
-<button onclick="window.print()">Print</button>
+<button onclick="window.print()" class="print-button">
+  <i class="fas fa-print"></i> Print
+</button>
+
+
     <div class="border border-black p-4">
         <header class="flex justify-between items-center mb-4">
             <div class="w-32 h-40 border border-black flex items-center justify-center">
@@ -106,29 +137,30 @@ const JoiningForm = () => {
                 <div class="w-1/1 pr-4">
                     <label class="block font-semibold">DOB (जन्मतारीख) :${formData.dob}</label>
                 </div>
-                <div class="w-1/2 pl-4">
-                    <label class="block font-semibold">GENDER (लिंग) :</label>
-                    <div class="flex items-center">
+                <div class="w-1/1 pl-4">
+                    <label class="block font-semibold">GENDER (लिंग) : ${formData.gender}</label>
+                    <div hidden className="flex items-center">
   <input
     type="radio"
     name="gender"
-    value="male"
-    checked={formData.gender === "male"}
+    value="Male"
+    checked=${formData.gender} === "Male" // Ensure the state is set to "Male"
     onChange={handleChange}
-    class="mr-2"
+    className="mr-2"
   />
   <span>MALE (पुरुष)</span>
 
   <input
     type="radio"
     name="gender"
-    value="female"
-    checked={formData.gender === "female"}
+    value="Female"
+    checked=${formData.gender} == "Female" // Ensure the state is set to "Female"
     onChange={handleChange}
-    class="ml-4 mr-2"
+    className="ml-4 mr-2"
   />
   <span>FEMALE (स्त्री)</span>
 </div>
+
 
                 </div>
             </div>
@@ -195,7 +227,7 @@ const JoiningForm = () => {
         </table>
         
     </div>
-    
+    <br></br>
     <!-- Nominee Details Section -->
     <div class="border-2 border-black p-4 mb-6">
         <h2 class="text-lg font-bold mb-4">NOMINEE DETAILS (वारसदार तपशील)</h2>
