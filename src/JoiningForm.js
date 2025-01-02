@@ -21,6 +21,10 @@ const JoiningForm = () => {
     bankIfscCode: "",
     bankName: "",
     bankBranch: "",
+    post:"",
+   dateofJoining:"",
+   photourl:"",
+
   });
 
   const handleChange = (e) => {
@@ -53,12 +57,12 @@ const JoiningForm = () => {
         }
     </style>
 </head>
-<body class="bg-white p-8">
+<body class="bg-white p-1">
 <button onclick="window.print()">Print</button>
     <div class="border border-black p-4">
         <header class="flex justify-between items-center mb-4">
             <div class="w-32 h-40 border border-black flex items-center justify-center">
-                <span>Passport Size Photo</span>
+              <img src="${formData.photourl}" alt="photo" class="w-32 h-40">
             </div>
             <div class="text-center">
                 <h1 class="font-bold text-xl">ADARSH ENTERPRISES</h1>
@@ -66,16 +70,16 @@ const JoiningForm = () => {
                 <p>AT/POST : PIRANGUT , TAL. MULSHI , DIST. PUNE - 412115</p>
                 <p>Prop. Vikas Gunware , MBL NO : 9921483129</p>
             </div>
-            <img src="https://placehold.co/100x100" alt="Adarsh Enterprises Logo" class="w-24 h-24">
+            <img src="/logo.jpg" alt="Adarsh Enterprises Logo" class="w-24 h-24">
         </header>
 
         <div class="mb-4">
             <div class="flex justify-between mb-2">
                 <div class="flex-1">
-                    <span>POST:</span>
+                    <span>POST:${formData.post}</span>
                 </div>
                 <div class="flex-1 flex justify-end">
-                    <span>DATE OF JOINING :<span> &emsp; &emsp; / &emsp; /</span></span>
+                    <span>DATE OF JOINING : ${formData.dateofJoining}</span>
                 </div>
             </div>
         </div>
@@ -92,59 +96,75 @@ const JoiningForm = () => {
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">FATHER / HUSBAND NAME :${formData.fatherName}</label>
                     <span>(वडील / पतीचे नाव)</span>
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">DOB (जन्मतारीख) :${formData.dob}</label>
                 </div>
                 <div class="w-1/2 pl-4">
-                    <label class="block font-semibold">GENDER (लिंग) :${formData.gender}</label>
+                    <label class="block font-semibold">GENDER (लिंग) :</label>
                     <div class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>MALE (पुरुष)</span>
-                        <input type="checkbox" class="ml-4 mr-2">
-                        <span>FEMALE (स्त्री)</span>
-                    </div>
+  <input
+    type="radio"
+    name="gender"
+    value="male"
+    checked={formData.gender === "male"}
+    onChange={handleChange}
+    class="mr-2"
+  />
+  <span>MALE (पुरुष)</span>
+
+  <input
+    type="radio"
+    name="gender"
+    value="female"
+    checked={formData.gender === "female"}
+    onChange={handleChange}
+    class="ml-4 mr-2"
+  />
+  <span>FEMALE (स्त्री)</span>
+</div>
+
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">AADHAR NUMBER (आधार क्रमांक):${formData.aadharNumber}</label>
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
-                    <label class="block font-semibold">PANCARD NO.(प परळ्द नं.):${formData.pancardNumber}</label>
+                <div class="w-1/1 pr-4">
+                    <label class="block font-semibold">PANCARD NO.(पॅनकार्ड नं.):${formData.pancardNumber}</label>
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">MOBILE NO. (मोबाईल क्र.):${formData.mobileNumber}</label>
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">PRESENT ADDRESS (सध्याचा पत्ता) :${formData.presentAddress}</label>
                 </div>
             </div>
 
             <div class="flex mb-2">
-                <div class="w-1/2 pr-4">
+                <div class="w-1/1 pr-4">
                     <label class="block font-semibold">PERMANENT ADDRESS(कायमचा पत्ता) :${formData.permanentAddress}</label>
                 </div>
             </div>
         </section>
 
-        <section class="border-t border-black py-2 mb-4">
+        <section class="border-t border-b border-black py-2 mb-4">
             <h2 class="text-center font-bold">FAMILY DETAILS (कौटुंबिक तपशील)</h2>
         </section>
 
@@ -175,28 +195,29 @@ const JoiningForm = () => {
         </table>
         
     </div>
+    
     <!-- Nominee Details Section -->
     <div class="border-2 border-black p-4 mb-6">
         <h2 class="text-lg font-bold mb-4">NOMINEE DETAILS (वारसदार तपशील)</h2>
         <div class="mb-4">
-            <label>NOMINEE NAME (वारसदार नाव) :</label>
+            <label>NOMINEE NAME (वारसदार नाव) :${formData.nomineeName}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>NOMINEE ADDRESS (वारसदार पत्ता) :</label>
+            <label>NOMINEE ADDRESS (वारसदार पत्ता) :${formData.nomineeAddress}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>NOMINEE MBL NO.(वारसदार मो. क्र.) :</label>
+            <label>NOMINEE MBL NO.(वारसदार मो. क्र.) : ${formData.nomineeMobile}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="flex space-x-10">
             <div>
-                <label>RELATION (नाते) :</label>
+                <label>RELATION (नाते) :${formData.nomineeRelation}</label>
                 <div class="border-b-2 border-black w-64"></div>
             </div>
             <div>
-                <label>DOB (जन्मतारीख) :</label>
+                <label>DOB (जन्मतारीख) :${formData.nomineeDob}</label>
                 <div class="border-b-2 border-black w-64"></div>
             </div>
         </div>
@@ -206,19 +227,19 @@ const JoiningForm = () => {
     <div class="border-2 border-black p-4 mb-6">
         <h2 class="text-lg font-bold mb-4">ACCOUNT DETAILS (खाते तपशील)</h2>
         <div class="mb-4">
-            <label>BANK ACCOUNT NUMBER (बँक खाते क्रमांक) :</label>
+            <label>BANK ACCOUNT NUMBER (बँक खाते क्रमांक) : ${formData.bankAccountNumber}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>BANK IFSC CODE (बँक IFSC कोड) :</label>
+            <label>BANK IFSC CODE (बँक IFSC कोड) :${formData.bankIfscCode}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>BANK NAME (बँकेचे नाव) :</label>
+            <label>BANK NAME (बँकेचे नाव) :${formData.bankName}</label>
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>BANK BRANCH ( बँके शाखा) :</label>
+            <label>BANK BRANCH ( बँके शाखा) :${formData.bankBranch}</label>
             <div class="border-b-2 border-black"></div>
         </div>
     </div>
@@ -234,13 +255,15 @@ const JoiningForm = () => {
             <li>I will be held responsible if the information given in the application form as well as the attached documents prove to be false.</li>
             <li>I agree to all the above conditions and have voluntarily signed this.</li>
         </ol>
-    </div>
-
-    <!-- Signature Section -->
-    <div class="border-2 border-black p-6 mt-12 inline-block">
+        
+        <div class="border-2 border-black p-6 mt-2 inline-block">
         <h2 class="text-lg font-bold">SIGNATURE OF EMPLOYEE</h2>
         <p class="text-center">(कर्मचाऱ्याची स्वाक्षरी)</p>
     </div>
+    </div>
+
+    <!-- Signature Section -->
+    
 
 </body>
 </html>
@@ -264,6 +287,23 @@ const JoiningForm = () => {
     const updatedFamilyDetails = formData.familyDetails.filter((_, i) => i !== index);
     setFormData((prev) => ({ ...prev, familyDetails: updatedFamilyDetails }));
   };
+
+  const handleFileurl = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64String = e.target.result;
+        console.log("Base64 string:", base64String); // Replace this with your logic
+        setFormData((prevData) => ({
+          ...prevData,
+          photourl: base64String, // Save the Base64 string in your form data
+        }));
+      };
+      reader.readAsDataURL(file); // Convert file to Base64 string
+    }
+  };
+  
   return (
     
     <form onSubmit={handleSubmit}
@@ -408,6 +448,23 @@ const JoiningForm = () => {
             </td>
           </tr>
           <tr>
+            <td style={{ padding: "10px", textAlign: "right" }}>Date of Joining</td>
+            <td  style={{ padding: "10px" }}>
+              <input
+                type="date"
+                name="dateofJoining"
+                value={formData.dateofJoining}
+                onChange={handleChange}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </td>
+          </tr>
+          <tr>
             <td style={{ padding: "10px", textAlign: "right" }}>PRESENT ADDRESS (सद्याचा पत्ता  ) :</td>
             <td  style={{ padding: "10px" }}>
               <input
@@ -431,6 +488,23 @@ const JoiningForm = () => {
                 type="text"
                 name="permanentAddress"
                 value={formData.permanentAddress}
+                onChange={handleChange}
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ padding: "10px", textAlign: "right" }}>POST</td>
+            <td  style={{ padding: "10px" }}>
+              <input
+                type="text"
+                name="post"
+                value={formData.post}
                 onChange={handleChange}
                 style={{
                   width: "100%",
@@ -597,7 +671,7 @@ const JoiningForm = () => {
             </td>
             <td style={{ padding: "10px" }}>
               <input
-                type="text"
+                type="date"
                 name="nomineeDob"
                 value={formData.nomineeDob}
                 onChange={handleChange}
@@ -683,33 +757,54 @@ const JoiningForm = () => {
               />
             </td>
           </tr>
-          
+          <tr>
+  <td style={{ padding: "10px", textAlign: "right" }}>Photo</td>
+  <td style={{ padding: "10px" }}>
+    <input
+      type="file"
+      name="photourl"
+      onChange={handleFileurl}
+      accept="image/*" 
+      style={{
+        width: "100%",
+        padding: "8px",
+        borderRadius: "4px",
+        border: "1px solid #ccc",
+      }}
+    />
+  </td>
+</tr>
+
               </td>
               </tr>
         </tbody>
       </table>
-      <button
-      type="submit"
-      style={{
-        padding: "10px 20px",
-        fontSize: "16px",
-        borderRadius: "4px",
-        border: "none",
-        backgroundColor: "#007bff",
-        color: "#fff",
-        cursor: "pointer",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-        textAlign: "center"
-      }}
-    >
-      Submit & Print
-    </button>
-    <div
+      <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+   // Optional, adjusts vertical centering
+  }}
+>
+  <button
+    type="submit"
     style={{
+      padding: "10px 20px",
+      fontSize: "16px",
+      borderRadius: "4px",
+      border: "none",
+      backgroundColor: "#007bff",
+      color: "#fff",
+      cursor: "pointer",
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
       textAlign: "center",
-      marginTop: "20px",
     }}
-  ></div>
+  >
+    Submit & Print
+  </button>
+</div>
+    
     </form>
   );
 };
