@@ -90,7 +90,7 @@ const JoiningForm = () => {
 </button>
 
 
-    <div class="border border-black p-4">
+    <div class="border border-black p-7">
         <header class="flex justify-between items-center mb-4">
             <div class="w-32 h-40 border border-black flex items-center justify-center">
               <img src="${formData.photourl}" alt="photo" class="w-32 h-40">
@@ -271,7 +271,7 @@ const JoiningForm = () => {
             <div class="border-b-2 border-black"></div>
         </div>
         <div class="mb-4">
-            <label>BANK BRANCH ( बँके शाखा) :${formData.bankBranch}</label>
+            <label>BANK BRANCH ( बँक शाखा) :${formData.bankBranch}</label>
             <div class="border-b-2 border-black"></div>
         </div>
     </div>
@@ -288,7 +288,7 @@ const JoiningForm = () => {
             <li>I agree to all the above conditions and have voluntarily signed this.</li>
         </ol>
         
-        <div class="border-2 border-black p-6 mt-2 inline-block">
+        <div class="border-2 border-black p-3  inline-block">
         <h2 class="text-lg font-bold">SIGNATURE OF EMPLOYEE</h2>
         <p class="text-center">(कर्मचाऱ्याची स्वाक्षरी)</p>
     </div>
@@ -359,6 +359,7 @@ const JoiningForm = () => {
               <input
                type="text"
                name="fullName"
+               autoComplete="off"
                value={formData.fullName}
                onChange={handleChange}
                required
@@ -379,6 +380,7 @@ const JoiningForm = () => {
           <input
             type="text"
             name="fatherName"
+            autoComplete="off"
             value={formData.fatherName}
             onChange={handleChange}
             required
@@ -434,6 +436,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="aadharNumber"
+                autoComplete="off"
                 value={formData.aadharNumber}
                 onChange={handleChange}
                 style={{
@@ -451,6 +454,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="mobileNumber"
+                autoComplete="off"
                 value={formData.mobileNumber}
                 onChange={handleChange}
                 style={{
@@ -468,6 +472,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="pancardNumber"
+                autoComplete="off"
                 value={formData.pancardNumber}
                 onChange={handleChange}
                 style={{
@@ -502,6 +507,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="presentAddress"
+                autoComplete="off"
                 value={formData.presentAddress}
                 onChange={handleChange}
                 style={{
@@ -519,6 +525,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="permanentAddress"
+                autoComplete="off"
                 value={formData.permanentAddress}
                 onChange={handleChange}
                 style={{
@@ -536,6 +543,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="post"
+                autoComplete="off"
                 value={formData.post}
                 onChange={handleChange}
                 style={{
@@ -581,6 +589,7 @@ const JoiningForm = () => {
                       <td>
                         <input
                           type="text"
+                          
                           value={detail.relation}
                           onChange={(e) =>
                             handleFamilyChange(index, "relation", e.target.value)
@@ -636,6 +645,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="nomineeName"
+                autoComplete="off"
                 value={formData.nomineeName}
                 onChange={handleChange}
                 style={{
@@ -653,6 +663,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="nomineeAddress"
+                autoComplete="off"
                 value={formData.nomineeAddress}
                 onChange={handleChange}
                 style={{
@@ -670,6 +681,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="nomineeMobile"
+                autoComplete="off"
                 value={formData.nomineeMobile}
                 onChange={handleChange}
                 style={{
@@ -687,6 +699,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="nomineeRelation"
+                autoComplete="off"
                 value={formData.nomineeRelation}
                 onChange={handleChange}
                 style={{
@@ -705,6 +718,7 @@ const JoiningForm = () => {
               <input
                 type="date"
                 name="nomineeDob"
+                autoComplete="off"
                 value={formData.nomineeDob}
                 onChange={handleChange}
                 style={{
@@ -727,6 +741,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="bankAccountNumber"
+                autoComplete="off"
                 value={formData.bankAccountNumber}
                 onChange={handleChange}
                 style={{
@@ -744,6 +759,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="bankIfscCode"
+                autoComplete="off"
                 value={formData.bankIfscCode}
                 onChange={handleChange}
                 style={{
@@ -761,6 +777,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="bankName"
+                autoComplete="off"
                 value={formData.bankName}
                 onChange={handleChange}
                 style={{
@@ -778,6 +795,7 @@ const JoiningForm = () => {
               <input
                 type="text"
                 name="bankBranch"
+                autoComplete="off"
                 value={formData.bankBranch}
                 onChange={handleChange}
                 style={{
